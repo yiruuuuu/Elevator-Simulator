@@ -10,23 +10,23 @@ class Elevator {
 
     public:
 
-    // 
+    // constructor
     Elevator(int floor = 1) {
         current_floor = floor;
     }
 
-    //
+    // 顯示目前所在的樓層
     void display_floor() {
         cout << "在第 " << current_floor << " 樓" << endl;
     }
 
-    //
+    // 移動到指定樓層
     void move(int floor) {
         current_floor = floor;
         display_floor();
     }
 
-    //
+    // 取得當前樓層
     int get_current_floor() {
         return current_floor;
     }
@@ -40,57 +40,76 @@ int main() {
     int user_floor, desired_floor;
 
     while(1) {
+
+        // 顯示目前電梯所在位置
         cout << "\n========== 電梯 ==========" << endl;
         cout << "電梯1 ";
         elevator1.display_floor();
         cout << "電梯2 ";
         elevator2.display_floor();
 
+        // 輸入目前所在樓層
         cout << "\n輸入目前所在樓層 (1-10，0 結束):";
         cin >> user_floor;
         if (user_floor == 0) {
             break;
         }
 
+        // 輸入要去的樓層
         cout << "輸入想去的樓層 (1-10):";
         cin >> desired_floor;
 
+        // 判斷哪個電梯較近
         int dist1 = abs(elevator1.get_current_floor() - user_floor);
         int dist2 = abs(elevator2.get_current_floor() - user_floor);
 
         if(dist1 <= dist2) {
+            /*
+            elevator1比較近
+            */
+
             if(elevator1.get_current_floor() < user_floor) {
+                // 電梯往上到user所在樓層
                 cout << "電梯1往上中..." << endl;
                 cout << "電梯1 ";
                 elevator1.move(user_floor);
                 cout << "電梯1 ";
                 elevator1.move(desired_floor);
             } else if(elevator1.get_current_floor() > user_floor) {
+                // 電梯往下到user所在樓層
                 cout << "電梯1往下中..." << endl;
                 cout << "電梯1 ";
                 elevator1.move(user_floor);
                 cout << "電梯1 ";
                 elevator1.move(desired_floor);
             } else {
+                // 電梯在user所在樓層
                 cout << "電梯1 ";
                 elevator1.move(user_floor);
                 cout << "電梯1 ";
                 elevator1.move(desired_floor);
             }
         } else {
+            /*
+            elevator2比較近
+            */
+
             if(elevator2.get_current_floor() < user_floor) {
+                // 電梯往上到user所在樓層
                 cout << "電梯2往上中..." << endl;
                 cout << "電梯2 ";
                 elevator2.move(user_floor);
                 cout << "電梯2 ";
                 elevator2.move(desired_floor);
             } else if(elevator2.get_current_floor() > user_floor) {
+                // 電梯往下到user所在樓層
                 cout << "電梯2往下中..." << endl;
                 cout << "電梯2 ";
                 elevator2.move(user_floor);
                 cout << "電梯2 ";
                 elevator2.move(desired_floor);
             } else {
+                // 電梯在user所在樓層
                 cout << "電梯2 ";
                 elevator2.move(user_floor);
                 cout << "電梯2 ";
