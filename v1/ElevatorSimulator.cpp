@@ -49,15 +49,30 @@ int main() {
         elevator2.display_floor();
 
         // 輸入目前所在樓層
-        cout << "\n輸入目前所在樓層 (1-10，0 結束):";
-        cin >> user_floor;
-        if (user_floor == 0) {
-            break;
+        while(1) {
+            cout << "\n輸入目前所在樓層 (1-10，0 結束):";
+            cin >> user_floor;
+
+            if(user_floor == 0) {
+                return 0;
+            } else if(user_floor < 0 || user_floor > 10){
+                cout << "無效輸入，請從新輸入！";
+            } else {
+                break;
+            }
         }
 
         // 輸入要去的樓層
-        cout << "輸入想去的樓層 (1-10):";
-        cin >> desired_floor;
+        while(1) {
+            cout << "\n輸入想去的樓層 (1-10):";
+            cin >> desired_floor;
+
+            if(desired_floor < 1 || desired_floor > 10) {
+                cout << "無效輸入，請從新輸入！";
+            } else {
+                break;
+            }
+        }
 
         // 判斷哪個電梯較近
         int dist1 = abs(elevator1.get_current_floor() - user_floor);
